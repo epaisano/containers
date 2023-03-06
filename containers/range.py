@@ -20,7 +20,7 @@ def range(a, b=None, c=None):
             i += 1
             yield result
     if b is not None and c is None:
-        result = a-1
+        result = a - 1
         i = a
         while i < b:
             result += 1
