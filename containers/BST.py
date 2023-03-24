@@ -193,7 +193,7 @@ class BST(BinaryTree):
         Helper function for remove
         '''
         if node is None:
-            return node 
+            return node
 
         if value < node.value:
             node.left = BST._remove(node.left, value)
