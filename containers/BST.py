@@ -38,7 +38,7 @@ class BST(BinaryTree):
         the first thing to do is to implement a
         function that checks whether
         the structure obeys all of its laws.
-        This makes it possible to automatically 
+        This makes it possible to automatically
         test whether insert/delete functions
         are actually working.
         '''
@@ -73,7 +73,6 @@ class BST(BinaryTree):
         else:
             self.root = Node(value)
 
-
     @staticmethod
     def _insert(node, value):
         '''
@@ -90,7 +89,6 @@ class BST(BinaryTree):
             else:
                 node.right = Node(value)
 
-
     def insert_list(self, xs):
         '''
         Given a list xs, insert each element of xs into self.
@@ -100,8 +98,6 @@ class BST(BinaryTree):
                 BST._insert(self.root, x)
             else:
                 self.root = Node(x)
-
-
 
     def __contains__(self, value):
         '''
@@ -117,7 +113,6 @@ class BST(BinaryTree):
             return None
         else:
             return BST._find(value, self.root)
-
 
     @staticmethod
     def _find(value, node):
@@ -150,7 +145,7 @@ class BST(BinaryTree):
     @staticmethod
     def _find_smallest(node):
         '''
-        This is a helper function for find_smallest and 
+        This is a helper function for find_smallest and
         not intended to be called directly by the user.
         '''
         assert node is not None
@@ -180,7 +175,6 @@ class BST(BinaryTree):
         else:
             return BST._find_largest(node.right)
 
-
     def remove(self, value):
         '''
         Removes value from the BST.
@@ -192,7 +186,6 @@ class BST(BinaryTree):
                 return self.root
             return self.root
         return self.root
-
 
     @staticmethod
     def _remove(node, value):
@@ -209,7 +202,6 @@ class BST(BinaryTree):
             node.right = BST._remove(node.right, value)
             return node
 
-        #value exists present in tree
         if node.value == value:
             if node.left is None and node.right is None:
                 node = None
