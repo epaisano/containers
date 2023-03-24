@@ -120,7 +120,6 @@ class BinaryTree():
         else:
             raise ValueError('Traversal type ' + str(traversal_type) + ' is not supported.')
 
-
     def preorder(self, start, traversal):
         traversal = []
         if start:
@@ -137,7 +136,6 @@ class BinaryTree():
             traversal += self.inorder(start.right, traversal)
         return traversal
 
-
     def postorder(self, start, traversal):
         traversal = []
         if start:
@@ -145,7 +143,6 @@ class BinaryTree():
             traversal += self.postorder(start.right, traversal)
             traversal.append(start.value)
         return traversal
-
 
     def __len__(self):
         return BinaryTree.__len__helper(self.root)
@@ -167,11 +164,10 @@ class BinaryTree():
     def height(self):
         '''
         Returns the height of the tree.
-        Recall that the height is the maximum length from 
+        Recall that the height is the maximum length from
         the root to a leaf node.
         '''
         return BinaryTree._height(self.root) - 1
-
 
     @staticmethod
     def _height(node):
@@ -183,4 +179,4 @@ class BinaryTree():
             lheight += BinaryTree._height(node.left)
         if node.right:
             rheight += BinaryTree._height(node.right)
-        return max(lheight, rheight) 
+        return max(lheight, rheight)
