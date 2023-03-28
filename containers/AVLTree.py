@@ -141,7 +141,6 @@ class AVLTree(BST):
             node.left = AVLTree._insert(node.left, value)
         else:
             node.right = AVLTree._insert(node.right, value)
- 
         # checking if satisfies AVL condition:
         if AVLTree._balance_factor(node) < -1:
             if value > node.right.value:
