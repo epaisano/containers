@@ -141,7 +141,7 @@ class AVLTree(BST):
             node.left = AVLTree._insert(node.left, value)
         else:
             node.right = AVLTree._insert(node.right, value)
-        
+ 
         # checking if satisfies AVL condition:
         if AVLTree._balance_factor(node) < -1:
             if value > node.right.value:
@@ -187,8 +187,6 @@ class AVLTree(BST):
             # then left rotation is all that's needed
             else:
                 AVLTree._left_rotate(node)
-
-
         # if balance factor is positive
         elif AVLTree.balance_factor(node) > 0:
             # if balance factor of our change is
