@@ -9,8 +9,6 @@ This homework is using an explicit tree implementation to help you get more prac
 '''
 
 from containers.BinaryTree import BinaryTree, Node
-import copy
-
 
 class Heap(BinaryTree):
     
@@ -136,4 +134,4 @@ class Heap(BinaryTree):
         and _trickle. It's possible to do it with only a single helper
         (or no helper at all), but I personally found dividing up the
         code into two made the most sense.
-        ''' 
+        '''
