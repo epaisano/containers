@@ -10,8 +10,9 @@ This homework is using an explicit tree implementation to help you get more prac
 
 from containers.BinaryTree import BinaryTree, Node
 
+
 class Heap(BinaryTree):
-    
+
     def __init__(self, xs=None):
         self.root = None
         self.num_nodes = 0
@@ -112,7 +113,7 @@ class Heap(BinaryTree):
         if self.root:
             return self.root.value
         else:
-            return None 
+            return None
 
     def remove_min(self):
         '''
