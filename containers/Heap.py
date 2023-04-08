@@ -17,8 +17,8 @@ class Heap(BinaryTree):
         self.root = None
         self.num_nodes = 0
         super().__init__()
-        if xs:
-            self.insert_list(xs)
+        if xs is not None:
+            Heap.insert_list(self,xs)
 
     def __repr__(self):
         '''
@@ -116,7 +116,7 @@ class Heap(BinaryTree):
             return None
 
     def remove_min(self):
-        '''
+        ''' 
         Removes the minimum value from the Heap.
         If the heap is empty, it does nothing.
 
@@ -127,12 +127,64 @@ class Heap(BinaryTree):
         The pseudocode is
         1. remove the bottom right node from the tree
         2. replace the root node with what was formerly the bottom right
-        3. "trickle down" the root node: recursively swap it with its
-        largest child until the heap property is satisfied
+        3. "trickle down" the root node: recursively swap it with its largest child until the heap property is satisfied
 
         HINT:
-        I created two @staticmethod helper functions: _remove_bottom_right
-        and _trickle. It's possible to do it with only a single helper
-        (or no helper at all), but I personally found dividing up the
-        code into two made the most sense.
+        I created two @staticmethod helper functions: _remove_bottom_right and _trickle.
+        It's possible to do it with only a single helper (or no helper at all),        but I personally found dividing up the code into two made the most sense.
         '''
+        binary_str = bin(self.num_nodes)[3:]
+        print("self.binary_str=", binary_str)
+        if self.root is None:
+            return "root dne"
+        else:   
+            if self.root.right or self.root.left:
+                print("self.root.value=", self.root.value)
+                self.root.value = Heap._remove_bottom_right(self.root, binary_str)
+                Heap._trickle(self.root)
+                self.num_nodes -= 1
+            else:
+                self.root = None
+
+    @staticmethod
+    def _remove_bottom_right(node, binary_str):
+        '''
+        Helper function for remove min 
+        ''' 
+        if binary_str[0] == '0':
+            if len(binary_str) == 1:
+                print("node.left.value=", node.left.value)
+                tmp = node.left.value 
+                print("tmp=", tmp)
+                node.left = None
+                print("tmp=", tmp)
+                return tmp
+            else:
+                return Heap._remove_bottom_right(node.left, binary_str[1:])
+        if binary_str[0] == '1':
+            if len(binary_str) == 1:
+                tmp = node.right.value
+                print("tmp=", tmp)
+                node.right = None
+                print("tmp=", tmp)
+                return tmp
+            else:
+                return Heap._remove_bottom_right(node.right, binary_str[1:])
+
+    @staticmethod
+    def _trickle(node):
+        '''
+        Helper function to ensure Heap remains Heap
+        '''
+        # if we have both children
+        if node.left:
+            # if left child is smaller than right
+            if node.left.value < node.value:
+                node.value, node.left.value = node.left.value, node.value
+                Heap._trickle(node.left)
+                # if right child is smaller than left
+        if node.right:
+            # if right child is smaller than current, make the switch
+            if node.right.value < node.value:
+                node.value, node.right.value = node.right.value, node.value
+                Heap._trickle(node.right)
