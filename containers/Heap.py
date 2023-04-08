@@ -18,7 +18,7 @@ class Heap(BinaryTree):
         self.num_nodes = 0
         super().__init__()
         if xs is not None:
-            Heap.insert_list(self,xs)
+            Heap.insert_list(self, xs)
 
     def __repr__(self):
         '''
@@ -116,7 +116,7 @@ class Heap(BinaryTree):
             return None
 
     def remove_min(self):
-        ''' 
+        '''
         Removes the minimum value from the Heap.
         If the heap is empty, it does nothing.
 
@@ -137,7 +137,7 @@ class Heap(BinaryTree):
         print("self.binary_str=", binary_str)
         if self.root is None:
             return "root dne"
-        else:   
+        else:
             if self.root.right or self.root.left:
                 print("self.root.value=", self.root.value)
                 self.root.value = Heap._remove_bottom_right(self.root, binary_str)
@@ -149,12 +149,12 @@ class Heap(BinaryTree):
     @staticmethod
     def _remove_bottom_right(node, binary_str):
         '''
-        Helper function for remove min 
-        ''' 
+        Helper function for remove min
+        '''
         if binary_str[0] == '0':
             if len(binary_str) == 1:
                 print("node.left.value=", node.left.value)
-                tmp = node.left.value 
+                tmp = node.left.value
                 print("tmp=", tmp)
                 node.left = None
                 print("tmp=", tmp)
