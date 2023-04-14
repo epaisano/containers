@@ -53,7 +53,7 @@ class BST(BinaryTree):
             return True
         else:
             return False
-   
+ 
     def is_bst_satisfied(self):
         '''
         Whenever you implement a data structure,
